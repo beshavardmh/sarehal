@@ -1,3 +1,4 @@
+---
 deployment:
   tasks:
     - export DEPLOYPATH=/home3/sarehalc/public_html/wp-content/themes/sarehal/
