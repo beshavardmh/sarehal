@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home3/sarehalc/public_html/
+    - /bin/cp -a * $DEPLOYPATH
