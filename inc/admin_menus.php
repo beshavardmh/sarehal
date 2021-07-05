@@ -1,0 +1,95 @@
+<?php
+
+add_action( 'admin_menu', 'sarehal_plans_menu' );
+
+function sarehal_plans_menu(){
+    add_menu_page(
+        'اشتراک ها',
+        'اشتراک ها',
+        'manage_options',
+        'sarehal-plans',
+        'sarehal_plans_menu_cb',
+        'dashicons-awards',
+        6
+    );
+}
+
+function sarehal_plans_menu_cb(){
+    get_template_part('templates/admin_menus/plans');
+}
+
+//--------------------------------------------------------------
+
+add_action('admin_menu', 'sarehal_plans_options_menu');
+
+function sarehal_plans_options_menu() {
+    add_submenu_page(
+        'sarehal-plans',
+        'گزینه های اشتراک ها',
+        'گزینه ها',
+        'manage_options',
+        'sarehal-plans-options',
+        'sarehal_plans_options_menu_cb' );
+}
+
+function sarehal_plans_options_menu_cb() {
+    get_template_part('templates/admin_menus/options_plans');
+}
+
+//--------------------------------------------------------------
+
+add_action('admin_menu', 'sarehal_plans_duration_menu');
+
+function sarehal_plans_duration_menu() {
+    add_submenu_page(
+        'sarehal-plans',
+        'مدت های اشتراک ها',
+        'مدت ها',
+        'manage_options',
+        'sarehal-plans-durations',
+        'sarehal_plans_durations_menu_cb' );
+}
+
+function sarehal_plans_durations_menu_cb() {
+    get_template_part('templates/admin_menus/duration_plans');
+}
+
+//--------------------------------------------------------------
+
+add_action('admin_menu', 'sarehal_transactions_menu');
+
+function sarehal_transactions_menu() {
+    add_menu_page(
+        'تراکنش ها',
+        'تراکنش ها',
+        'manage_options',
+        'sarehal-transactions',
+        'sarehal_transactions_menu_cb',
+        'dashicons-money-alt',
+        6
+    );
+}
+
+function sarehal_transactions_menu_cb() {
+    get_template_part('templates/admin_menus/transactions');
+}
+
+//--------------------------------------------------------------
+
+add_action('admin_menu', 'sarehal_users_menu');
+
+function sarehal_users_menu() {
+    add_menu_page(
+        'لید ها',
+        'لید ها',
+        'manage_options',
+        'sarehal-leads',
+        'sarehal_users_menu_cb',
+        'dashicons-groups',
+        6
+    );
+}
+
+function sarehal_users_menu_cb() {
+    get_template_part('templates/admin_menus/users');
+}
