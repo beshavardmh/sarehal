@@ -472,22 +472,21 @@ if (!isset($_GET['target'])) {
                                                    value="<?php echo $plan->ID; ?>">
                                         </label>
                                     </div>
-                                    <div>
-                                        <p>هنوز مطمئن نیستم!</p>
-
-                                        <label id="btn-plans-step"
-                                               class="px-2 mt-2 btn btn-dark min-w-200 radius-25 text-white px-5">
-                                            مشورت با مربی
-                                            <input type="radio" class="d-none" name="plans-step"
-                                                   value="<?php echo $plan->ID; ?>">
-                                        </label>
-
-                                    </div>
                                 </div>
                             </div>
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
+
+                <div class="evaluation-box p-4 radius-30 mt-6">
+                    <div class="row flex-column flex-md-row ai-center jc-between mt-n4">
+                        <div class="text-white text-center text-md-right px-3 mt-4">
+                            <p class="font-22 mt-2 fw-normal">هنوز مطمئن نیستی؟</p>
+                        </div>
+
+                        <a href="https://api.whatsapp.com/send?phone=989901100715" class="btn bg-white fg-pencil radius-25 px-5 mx-3 mt-4">مشورت رایگان با مربی</a>
+                    </div>
+                </div>
             </div>
         </div>
         
