@@ -10,7 +10,7 @@
 
 </main>
 
-<script src="//code.tidio.co/q3xzgakzbsdpjduwfvh7s76i8x1ar6qd.js" async></script>
+<!--<script src="//code.tidio.co/q3xzgakzbsdpjduwfvh7s76i8x1ar6qd.js" async></script>-->
 
 <?php wp_footer(); ?>
 </body>
