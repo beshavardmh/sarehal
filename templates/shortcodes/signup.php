@@ -592,9 +592,22 @@ if (!isset($_GET['target'])) {
                 <h2 class="font-28 h-b-line text-center fw-bold mb-4 mt-6">سرمایه گذاری شما</h2>
                 <table class="table mt-6">
                     <tr>
+                        <td colspan="2" class="text-center">
+                            <div class="row jc-center mt-n3 py-3 jc-sm-between mx-n2 ai-center">
+                                <input type="text" name="discount-code" class="form-control mt-3 radius-25 max-w-300 mx-2" placeholder="کد تخفیف">
+
+                                <button type="button" class="apply_discount btn btn-main font-16 radius-25 text-white px-5 mt-3 mx-2">اعمال</button>
+                            </div>
+
+                            <p id="discount_alert" class="display-none fg-red font-13"></p>
+                        </td>
+                    </tr>
+
+                    <tr>
                         <td class="text-right">
                             <p class="fw-semibold font-20">اشتراک فیتنس با سرِحال</p>
-                            <p class="mt-2 pr-2">تخفیف</p>
+                            <p class="mt-2 pr-2">تخفیف تابستانه</p>
+                            <p class="display-none discount_summary mt-2 pr-2">کد تخفیف</p>
                             <p class="mt-2 pr-2">مالیات بر ارزش افزوده</p>
                         </td>
                         <td class="text-left">
@@ -603,6 +616,9 @@ if (!isset($_GET['target'])) {
                                 تومان
                             </p>
                             <p class="mt-2 fg-red fw-semibold font-20 dir-ltr">-<b id="plan_percentage">50</b><span
+                                        class="font-sans-serif font-17">%</span>
+                            </p>
+                            <p class="display-none discount_summary mt-2 fg-red fw-semibold font-20 dir-ltr">-<b id="discount_summary_percentage">20</b><span
                                         class="font-sans-serif font-17">%</span>
                             </p>
                             <p class="mt-2 fg-green fw-semibold font-20 dir-ltr">+9<span

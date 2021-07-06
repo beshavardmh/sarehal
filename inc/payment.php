@@ -96,6 +96,8 @@ class SarehalPayment
         } else {
             $transaction = $this->save_transaction($result);
 
+            $this->insert_used_discount();
+
             if ($result['data']['code'] == 100) {
                 $sms = $this->send_sms();
                 $callback_success($this, $result);
@@ -141,6 +143,20 @@ class SarehalPayment
     {
         $db = $this->get_instance_db_manager();
         return !($db->get_result_by($db->table_users, "phone = '$phone' AND type = '$type'"));
+    }
+
+    public function insert_used_discount()
+    {
+        $user_phone = $_SESSION['signup_user_phone'];
+
+        $discount_id = $_SESSION['discount_id'];
+
+        $db = $this->get_instance_db_manager();
+
+        $row = $db->insert($db->table_discounts, compact(
+            'user_phone',
+            'discount_id'
+        ));
     }
 
     public function get_instance_db_manager()

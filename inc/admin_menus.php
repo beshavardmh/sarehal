@@ -56,6 +56,24 @@ function sarehal_plans_durations_menu_cb() {
 
 //--------------------------------------------------------------
 
+add_action('admin_menu', 'sarehal_plans_discounts_menu');
+
+function sarehal_plans_discounts_menu() {
+    add_submenu_page(
+        'sarehal-plans',
+        'کد های تخفیف',
+        'کد های تخفیف',
+        'manage_options',
+        'sarehal-plans-discounts',
+        'sarehal_plans_discounts_menu_cb' );
+}
+
+function sarehal_plans_discounts_menu_cb() {
+    get_template_part('templates/admin_menus/discounts_plans');
+}
+
+//--------------------------------------------------------------
+
 add_action('admin_menu', 'sarehal_transactions_menu');
 
 function sarehal_transactions_menu() {

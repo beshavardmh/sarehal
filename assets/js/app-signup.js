@@ -12,7 +12,6 @@ jQuery(document).ready(function ($) {
         isValidName,
         isValidEmail,
         processBtn,
-        targetOptions,
         signUpHandler,
         isValidHeight,
         isValidWeight,
@@ -26,6 +25,7 @@ jQuery(document).ready(function ($) {
         saveUserValidation,
         getPlanDetails,
         goPaymentValidation,
+        applyDiscount,
         cardTestimonialSlider;
 
 
@@ -94,14 +94,6 @@ jQuery(document).ready(function ($) {
 
     }
     // --------------------
-    targetOptions = () => {
-        $('.target_option').on('click', function () {
-            $('* .target_option').removeClass('selected');
-            $(this).addClass('selected');
-            $('#start').removeClass('disabled').attr('type', 'submit');
-        });
-    }
-
     signUpHandler = () => {
         if ($('.signup .step').length) {
 
@@ -692,6 +684,12 @@ jQuery(document).ready(function ($) {
                         $('#payment-step #plan_lined_price').html(response.data.plan_lined_price);
                         $('#payment-step #plan_percentage').html(response.data.plan_percentage);
                         $('#payment-step #plan_price').html(response.data.plan_price + ' تومان');
+
+                        $('[name="discount-code"]').val(null);
+                        $('#discount_alert').html(null).hide();
+                        $('#discount_summary_percentage').text(null);
+                        $('* .discount_summary').hide();
+
                         goNextStep();
                     }
                 }
@@ -739,6 +737,40 @@ jQuery(document).ready(function ($) {
         }
     }
 
+    applyDiscount = () => {
+        $('.apply_discount').on('click', function () {
+            let discount_code = $('[name="discount-code"]').val();
+            let plan_id = $('[name="plans-step"]:checked').val();
+
+            if (!discount_code.length || !plan_id.length){
+                return;
+            }
+
+            processBtn($('.apply_discount'), 'active');
+            $.ajax({
+                type: "POST",
+                url: sarehal_ajax.ajax_url,
+                data: {
+                    'discount_code': discount_code,
+                    'plan_id': plan_id,
+                    'nonce': sarehal_ajax.nonce,
+                    'action': 'discount_check_ajax'
+                },
+                success: function (response) {
+                    processBtn($('.apply_discount'), 'deactive');
+                    if (!response.success) {
+                        $('#discount_alert').html(response.data.msg).removeClass('fg-green').addClass('fg-red').show();
+                    } else {
+                        $('#discount_alert').html(response.data.msg).removeClass('fg-red').addClass('fg-green').show();
+                        $('#plan_price').text(response.data.plan_price);
+                        $('#discount_summary_percentage').text(response.data.discount_percentage);
+                        $('* .discount_summary').show();
+                    }
+                }
+            });
+        });
+    }
+
     /**
      *
      * --- Call function ---
@@ -746,10 +778,10 @@ jQuery(document).ready(function ($) {
      */
     //htmlClick();
     // --------------------
-    targetOptions();
     signUpHandler();
     enterKeyHandler();
     cardTestimonialSlider();
+    applyDiscount();
 });
 
 jQuery.event.special.touchstart = {
