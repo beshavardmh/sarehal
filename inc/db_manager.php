@@ -113,9 +113,12 @@ class SarehalDbManager
         $sql .= "  `card` varchar(30) NULL, ";
         $sql .= "  `user_id` int(11) NOT NULL, ";
         $sql .= "  `plan_id` int(11) NOT NULL, ";
+        $sql .= "  `has_discount` BOOLEAN DEFAULT 0 NOT NULL, ";
+        $sql .= "  `discount_id` int(11) NULL, ";
         $sql .= "  `date` DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL, ";
         $sql .= "  FOREIGN KEY (user_id) REFERENCES $this->table_users(ID), ";
         $sql .= "  FOREIGN KEY (plan_id) REFERENCES $this->table_plans(ID), ";
+        $sql .= "  FOREIGN KEY (discount_id) REFERENCES $this->table_discounts(ID), ";
         $sql .= "  PRIMARY KEY (`ID`) ) ";
 
         $this->create($sql);

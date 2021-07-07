@@ -46,10 +46,6 @@
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="preload" as="style" href="https://sarehal.com/wp-content/cache/wpfc-minified/8aykeqn1/5pz52.css">
-    <link rel="preload" as="script" href="https://sarehal.com/wp-content/cache/wpfc-minified/17u72c1/5pz52.js" importance="hight">
-    <link rel="preload" as="image" href="https://sarehal.com/wp-content/uploads/2021/06/Linear-Logo.svg">
-
     <?php wp_head(); ?>
 </head>
 <body>

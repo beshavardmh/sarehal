@@ -119,8 +119,17 @@ class SarehalPayment
         $user_id = $_SESSION['signup_user_id'];
         $plan_id = $_SESSION['payment_plan_id'];
 
+        if (!empty($_SESSION['discount_id'])){
+            $discount_id = $_SESSION['discount_id'];
+            $has_discount = 1;
+        }
+        else{
+            $discount_id = null;
+            $has_discount = 0;
+        }
+
         $db = $this->get_instance_db_manager();
-        $db->insert($db->table_transactions, compact('paid', 'status_code', 'amount', 'ref_code', 'card', 'user_id', 'plan_id'));
+        $db->insert($db->table_transactions, compact('paid', 'status_code', 'amount', 'ref_code', 'card', 'user_id', 'plan_id', 'has_discount', 'discount_id'));
     }
 
     public function save_user()
