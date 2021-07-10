@@ -48,7 +48,7 @@ function sarehal_deregister_scripts_styles()
     }
 
     foreach ($wp_styles->registered as $wp_style) {
-//        wp_deregister_style($wp_style->handle);
+        wp_deregister_style($wp_style->handle);
     }
 }
 
@@ -73,7 +73,7 @@ function sarehal_enqueue_bundles()
 
     wp_enqueue_script('bundle', Assets_compress::js($sarehal_assets['scripts'], 'bundle.min.js', 1), null, null, 'true');
 
-//    wp_enqueue_style('bundle', Assets_compress::css($sarehal_assets['styles'], 'bundle.min.css', 1));
+    wp_enqueue_style('bundle', Assets_compress::css($sarehal_assets['styles'], 'bundle.min.css', 1));
 
     if (!empty($GLOBALS['localize_scripts'])){
         foreach ($GLOBALS['localize_scripts'] as $localize_script){
@@ -113,6 +113,6 @@ function assets_compress()
     }
 }
 
-assets_compress();
+//assets_compress();
 
 
