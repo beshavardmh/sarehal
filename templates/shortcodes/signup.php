@@ -234,7 +234,7 @@ if (!isset($_GET['target'])) {
                 <label class="radius-30 lh-2_4 px-3 py-2 mt-4 min-w-200 w-100 max-w-300 mx-auto outline_option d-flex ai-center jc-center">
                     <i class="fal fa-square font-18"></i>
                     <p class="mr-2 mt-1">سایر</p>
-                    <input type="checkbox" class="d-none" name="sickness-step[]" value="other">
+                    <input type="checkbox" class="d-none" name="sickness-step[]" value="سایر">
                 </label>
 
                 <label class="radius-30 lh-2_4 px-3 py-2 mt-4 min-w-200 w-100 max-w-300 mx-auto outline_option d-flex ai-center jc-center">

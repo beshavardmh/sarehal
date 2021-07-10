@@ -4,8 +4,8 @@ add_action( 'admin_menu', 'sarehal_plans_menu' );
 
 function sarehal_plans_menu(){
     add_menu_page(
-        'اشتراک ها',
-        'اشتراک ها',
+        'اشتراک‌ها',
+        'اشتراک‌ها',
         'manage_options',
         'sarehal-plans',
         'sarehal_plans_menu_cb',
@@ -25,8 +25,8 @@ add_action('admin_menu', 'sarehal_plans_options_menu');
 function sarehal_plans_options_menu() {
     add_submenu_page(
         'sarehal-plans',
-        'گزینه های اشتراک ها',
-        'گزینه ها',
+        'گزینه‌های اشتراک‌ها',
+        'گزینه‌ها',
         'manage_options',
         'sarehal-plans-options',
         'sarehal_plans_options_menu_cb' );
@@ -43,8 +43,8 @@ add_action('admin_menu', 'sarehal_plans_duration_menu');
 function sarehal_plans_duration_menu() {
     add_submenu_page(
         'sarehal-plans',
-        'مدت های اشتراک ها',
-        'مدت ها',
+        'مدت‌های اشتراک‌ها',
+        'مدت‌ها',
         'manage_options',
         'sarehal-plans-durations',
         'sarehal_plans_durations_menu_cb' );
@@ -61,8 +61,8 @@ add_action('admin_menu', 'sarehal_plans_discounts_menu');
 function sarehal_plans_discounts_menu() {
     add_submenu_page(
         'sarehal-plans',
-        'کد های تخفیف',
-        'کد های تخفیف',
+        'کد‌های تخفیف',
+        'کد‌های تخفیف',
         'manage_options',
         'sarehal-plans-discounts',
         'sarehal_plans_discounts_menu_cb' );
@@ -78,8 +78,8 @@ add_action('admin_menu', 'sarehal_transactions_menu');
 
 function sarehal_transactions_menu() {
     add_menu_page(
-        'تراکنش ها',
-        'تراکنش ها',
+        'تراکنش‌ها',
+        'تراکنش‌ها',
         'manage_options',
         'sarehal-transactions',
         'sarehal_transactions_menu_cb',
@@ -98,8 +98,8 @@ add_action('admin_menu', 'sarehal_users_menu');
 
 function sarehal_users_menu() {
     add_menu_page(
-        'لید ها',
-        'لید ها',
+        'لید‌ها',
+        'لید‌ها',
         'manage_options',
         'sarehal-leads',
         'sarehal_users_menu_cb',
@@ -110,4 +110,24 @@ function sarehal_users_menu() {
 
 function sarehal_users_menu_cb() {
     get_template_part('templates/admin_menus/users');
+}
+
+//--------------------------------------------------------------
+
+add_action('admin_menu', 'sarehal_customers_menu');
+
+function sarehal_customers_menu() {
+    add_menu_page(
+        'مشتری‌ها',
+        'مشتری‌ها',
+        'manage_options',
+        'sarehal-customers',
+        'sarehal_customers_menu_cb',
+        'dashicons-buddicons-buddypress-logo',
+        6
+    );
+}
+
+function sarehal_customers_menu_cb() {
+    get_template_part('templates/admin_menus/customers');
 }

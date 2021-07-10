@@ -1,28 +1,10 @@
 <?php
-$current_url = add_query_arg('page', 'sarehal-leads', admin_url('admin.php'));
+$current_url = add_query_arg('page', 'sarehal-customers', admin_url('admin.php'));
 $db = new SarehalDbManager();
 
-if (isset($_GET['delete-lead']) && intval($_GET['delete-lead'])) {
-    $row = $db->delete($db->table_users, $_GET['delete-lead']);
-    if ($row) {
-        add_action('admin_notices', function () {
-            echo '<div class="notice notice-success is-dismissible">
-             <p>لید مورد نظر با موفقیت حذف شد!</p>
-         </div>';
-        });
-    } else {
-        add_action('admin_notices', function () {
-            echo '<div class="notice notice-error is-dismissible">
-             <p>عملیات با شکست مواجه شد!</p>
-         </div>';
-        });
-    }
-}
 ?>
 <div class="wrap">
-    <h2 class="fw-bold">لید ها</h2>
-
-    <?php do_action('admin_notices'); ?>
+    <h2 class="fw-bold">مشتری‌ ها</h2>
 
     <div class="table-responsive">
         <table class="wp-list-table widefat striped vertical-middle">
@@ -35,17 +17,21 @@ if (isset($_GET['delete-lead']) && intval($_GET['delete-lead'])) {
                 <th>بیماری‌ها</th>
                 <th>فعال بودن پیامک</th>
                 <th>تاریخ ثبت نام</th>
-                <th></th>
+                <th>تاریخ تبدیل</th>
             </tr>
             </thead>
             <tbody>
             <?php
-            $total = $db->get_count($db->table_users);
             $post_per_page = 10;
             $page = isset( $_GET['cpage'] ) ? abs( (int) $_GET['cpage'] ) : 1;
             $offset = ( $page * $post_per_page ) - $post_per_page;
 
-            $rows = $db->get_results($db->table_users, 'DESC', "LIMIT $post_per_page OFFSET $offset");
+            $rows = $db->select("SELECT $db->table_users.*, $db->table_transactions.date AS `conversion_date` FROM $db->table_users INNER JOIN $db->table_transactions
+    ON $db->table_users.ID = $db->table_transactions.user_id AND $db->table_transactions.paid = 1
+ORDER BY ID DESC LIMIT $post_per_page OFFSET $offset");
+
+            $total = count($rows);
+
             if ($rows): ?>
                 <?php foreach ($rows as $row): ?>
                     <tr>
@@ -59,16 +45,12 @@ if (isset($_GET['delete-lead']) && intval($_GET['delete-lead'])) {
                         <td><?php echo implode(' - ', json_decode(stripslashes($row->diseases))); ?></td>
                         <td><?php echo $row->sms_adv ? 'بله' : 'خیر'; ?></td>
                         <td><?php echo parsidate('H:i - Y/m/d', $row->date, 'per'); ?></td>
-                        <td>
-                            <a onclick="return confirm('از حذف این لید اطمینان دارید؟')"
-                               href="<?php echo add_query_arg('delete-lead', $row->ID, $current_url); ?>"
-                               class="button button-red dashicons-trash font-dashicon fs-20 lh-1_6"></a>
-                        </td>
+                        <td><?php echo parsidate('H:i - Y/m/d', $row->conversion_date, 'per'); ?></td>
                     </tr>
                 <?php endforeach; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="8">هیچ لیدی پیدا نشد!</td>
+                    <td colspan="8">هیچ مشتری‌ای پیدا نشد!</td>
                 </tr>
             <?php endif; ?>
             </tbody>

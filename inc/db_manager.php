@@ -152,37 +152,40 @@ class SarehalDbManager
         dbDelta($sql);
     }
 
-
-    public function get_count($tableName)
+    public function get_count($tableName, $columns = '*')
     {
-        return $this->wpdb->get_var("SELECT COUNT(*) FROM $tableName");
+        return $this->wpdb->get_var("SELECT COUNT($columns) FROM $tableName");
     }
 
-    public function get_count_where($tableName, $where)
+    public function get_count_where($tableName, $where, $columns = '*')
     {
-        return $this->wpdb->get_var("SELECT COUNT(*) FROM $tableName WHERE $where");
+        return $this->wpdb->get_var("SELECT COUNT($columns) FROM $tableName WHERE $where");
     }
 
-    public function get_row($tableName, $id)
+    public function get_row($tableName, $id, $columns = '*')
     {
-        return $this->wpdb->get_row("SELECT * FROM $tableName WHERE `ID` = $id ORDER BY ID DESC");
+        return $this->wpdb->get_row("SELECT $columns FROM $tableName WHERE `ID` = $id ORDER BY ID DESC");
     }
 
-    public function get_row_last($tableName, $order = 'ASC')
+    public function get_row_last($tableName, $order = 'ASC', $columns = '*')
     {
-        return $this->wpdb->get_row("SELECT * FROM $tableName ORDER BY ID $order LIMIT 1");
+        return $this->wpdb->get_row("SELECT $columns FROM $tableName ORDER BY ID $order LIMIT 1");
     }
 
-    public function get_result_by($tableName, $where)
+    public function get_result_by($tableName, $where, $columns = '*')
     {
-        return $this->wpdb->get_row("SELECT * FROM $tableName WHERE $where");
+        return $this->wpdb->get_row("SELECT $columns FROM $tableName WHERE $where");
     }
 
-    public function get_results($tableName, $order = 'ASC', $query = '')
+    public function get_results($tableName, $order = 'ASC', $query = '', $columns = '*')
     {
-        return $this->wpdb->get_results("SELECT * FROM $tableName ORDER BY ID $order $query");
+        return $this->wpdb->get_results("SELECT $columns FROM $tableName ORDER BY ID $order $query");
     }
 
+    public function select($query)
+    {
+        return $this->wpdb->get_results($query);
+    }
 
     public function delete($tableName, $id)
     {
