@@ -44,7 +44,7 @@ $db = new SarehalDbManager();
                         <td><?php echo $payment->payment_messages[$row->ref_code]; ?></td>
                         <td><?php echo $db->get_row($db->table_plans, $row->plan_id)->name; ?></td>
                         <td><?php echo $row->has_discount ? number_format($db->get_row($db->table_discounts, $row->discount_id)->price) . ' تومان' : 'بدون تخفیف'; ?></td>
-                        <td><?php echo $payment->payment_messages[$row->card]; ?></td>
+                        <td><?php echo $row->card; ?></td>
                         <td><?php echo parsidate('H:i - Y/m/d', $row->date, 'per'); ?></td>
                     </tr>
                 <?php endforeach; ?>
