@@ -48,7 +48,7 @@ function sarehal_deregister_scripts_styles()
     }
 
     foreach ($wp_styles->registered as $wp_style) {
-        wp_deregister_style($wp_style->handle);
+//        wp_deregister_style($wp_style->handle);
     }
 }
 
@@ -56,10 +56,10 @@ function sarehal_preload_bundles()
 {
     ob_start();
     ?>
-    <link rel="preload" as="style"
-          href="<?php echo get_template_directory_uri() . '/assets/compress/bundle.min.css'; ?>">
-    <link rel="preload" as="script"
-          href="<?php echo get_template_directory_uri() . '/assets/compress/bundle.min.js'; ?>" importance="hight">
+<!--    <link rel="preload" as="style"-->
+<!--          href="--><?php //echo get_template_directory_uri() . '/assets/compress/bundle.min.css'; ?><!--">-->
+<!--    <link rel="preload" as="script"-->
+<!--          href="--><?php //echo get_template_directory_uri() . '/assets/compress/bundle.min.js'; ?><!--" importance="hight">-->
     <link rel="preload" as="image" href="https://sarehal.com/wp-content/uploads/2021/06/Linear-Logo.svg">
     <?php
     ob_end_flush();
@@ -73,7 +73,7 @@ function sarehal_enqueue_bundles()
 
     wp_enqueue_script('bundle', Assets_compress::js($sarehal_assets['scripts'], 'bundle.min.js', 1), null, null, 'true');
 
-    wp_enqueue_style('bundle', Assets_compress::css($sarehal_assets['styles'], 'bundle.min.css', 1));
+//    wp_enqueue_style('bundle', Assets_compress::css($sarehal_assets['styles'], 'bundle.min.css', 1));
 
     if (!empty($GLOBALS['localize_scripts'])){
         foreach ($GLOBALS['localize_scripts'] as $localize_script){
