@@ -96,10 +96,11 @@ class SarehalPayment
         } else {
             $transaction = $this->save_transaction($result);
 
-            $this->insert_used_discount();
-
             if ($result['data']['code'] == 100) {
                 $sms = $this->send_sms();
+
+                $this->insert_used_discount();
+
                 $callback_success($this, $result);
             } else {
                 $callback_error($this, $result);
