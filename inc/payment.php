@@ -162,7 +162,7 @@ class SarehalPayment
 
         $db = $this->get_instance_db_manager();
 
-        $row = $db->insert($db->table_discounts, compact(
+        $row = $db->insert($db->table_used_discounts, compact(
             'user_phone',
             'discount_id'
         ));
