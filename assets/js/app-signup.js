@@ -681,9 +681,18 @@ jQuery(document).ready(function ($) {
                     } else {
                         $('#payment-step #plan_name').html(' اشتراک ' + response.data.plan_duration_name + '‌ی <b class="font-22">' + response.data.plan_name + '</b>، شامل این خدمات می‌شود:');
                         $('#payment-step #plan_options').html(response.data.plan_options);
-                        $('#payment-step #plan_lined_price').html(response.data.plan_lined_price);
-                        $('#payment-step #plan_percentage').html(response.data.plan_percentage);
                         $('#payment-step #plan_price').html(response.data.plan_price + ' تومان');
+
+                        if (response.data.plan_lined_price !== ''){
+                            $('#payment-step #plan_lined_price').html(response.data.plan_lined_price);
+                            $('#payment-step #plan_percentage').html(response.data.plan_percentage);
+                            $('#plan_price_in_summary').hide();
+                            $('* .has_lined_price').show();
+                        }
+                        else{
+                            $('#plan_price_in_summary').show().html(response.data.plan_price + ' تومان');
+                            $('* .has_lined_price').hide();
+                        }
 
                         $('[name="discount-code"]').val(null);
                         $('#discount_alert').html(null).hide();

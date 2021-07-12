@@ -1,6 +1,6 @@
 <?php
-if (!isset($_GET['target'])) {
-    wp_redirect(home_url());
+if ( ! isset( $_GET['target'] ) ) {
+	wp_redirect( home_url() );
 }
 ?>
 
@@ -437,32 +437,34 @@ if (!isset($_GET['target'])) {
                     اشتراک مورد نظر خود را انتخاب کنید.
                 </p>
 
-                <?php
-                $db = new SarehalDbManager();
-                $plans = $db->get_results($db->table_plans);
-                ?>
-                <?php if ($plans): ?>
+				<?php
+				$db    = new SarehalDbManager();
+				$plans = $db->get_results( $db->table_plans );
+				?>
+				<?php if ( $plans ): ?>
                     <div class="row jc-center mt-n3 mt-lg-0">
-                        <?php foreach ($plans as $plan): ?>
+						<?php foreach ( $plans as $plan ): ?>
                             <div class="col-lg-6 mt-5">
                                 <div class="item radius-17 p-3 w-100 max-w-400 mx-auto border">
-                                    <b class="d-block fw-bold font-22"><?php echo $db->get_row($db->table_plans_durations, $plan->duration_id)->name . ' - ' . $plan->name; ?></b>
-                                    <?php $options = unserialize($plan->options); ?>
-                                    <?php if ($options): ?>
+                                    <b class="d-block fw-bold font-22"><?php echo $db->get_row( $db->table_plans_durations, $plan->duration_id )->name . ' - ' . $plan->name; ?></b>
+									<?php $options = unserialize( $plan->options ); ?>
+									<?php if ( $options ): ?>
                                         <ul class="pkg-items text-right my-3">
-                                            <?php foreach ($options as $option_id => $option): ?>
-                                                <?php if ($option['active'] && $option['show_on_cta']): ?>
-                                                    <li class="my-1"><?php echo $db->get_row($db->table_plans_options, $option_id)->name; ?></li>
-                                                <?php endif; ?>
-                                            <?php endforeach; ?>
+											<?php foreach ( $options as $option_id => $option ): ?>
+												<?php if ( $option['active'] && $option['show_on_cta'] ): ?>
+                                                    <li class="my-1"><?php echo $db->get_row( $db->table_plans_options, $option_id )->name; ?></li>
+												<?php endif; ?>
+											<?php endforeach; ?>
                                         </ul>
-                                    <?php endif; ?>
+									<?php endif; ?>
                                     <div class="d-flex mx-n2 flex-column flex-sm-row ai-center jc-center jc-sm-between mt-n2">
                                         <div class="px-2 mt-2">
-                                            <del class="fg-gray font-16"> <?php echo number_format($plan->lined_price); ?>
-                                                تومان
-                                            </del>
-                                            <p class="fg-main font-20 fw-semibold"> <?php echo number_format($plan->price); ?>
+											<?php if ( ! empty( $plan->lined_price ) ): ?>
+                                                <del class="fg-gray font-16"> <?php echo number_format( $plan->lined_price ); ?>
+                                                    تومان
+                                                </del>
+											<?php endif; ?>
+                                            <p class="fg-main font-20 fw-semibold"> <?php echo number_format( $plan->price ); ?>
                                                 تومان</p>
                                         </div>
                                         <label id="btn-plans-step"
@@ -474,9 +476,9 @@ if (!isset($_GET['target'])) {
                                     </div>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
+						<?php endforeach; ?>
                     </div>
-                <?php endif; ?>
+				<?php endif; ?>
 
                 <div class="evaluation-box p-4 radius-30 mt-6">
                     <div class="row flex-column flex-md-row ai-center jc-between mt-n4">
@@ -484,12 +486,13 @@ if (!isset($_GET['target'])) {
                             <p class="font-22 mt-2 fw-normal">هنوز مطمئن نیستی؟</p>
                         </div>
 
-                        <a href="https://api.whatsapp.com/send?phone=989901100715" class="btn bg-white fg-pencil radius-25 px-5 mx-3 mt-4">مشورت رایگان با مربی</a>
+                        <a href="https://api.whatsapp.com/send?phone=989901100715"
+                           class="btn bg-white fg-pencil radius-25 px-5 mx-3 mt-4">مشورت رایگان با مربی</a>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div id="payment-step"
              class="step position-absolute w-100 h-100 text-center top-0 right-0">
             <div class="container px-4 pb-6 max-w-500">
@@ -594,9 +597,13 @@ if (!isset($_GET['target'])) {
                     <tr>
                         <td colspan="2" class="text-center">
                             <div class="row jc-center mt-n3 py-3 jc-sm-between mx-n2 ai-center">
-                                <input type="text" name="discount-code" class="form-control mt-3 radius-25 max-w-300 mx-2" placeholder="کد تخفیف">
+                                <input type="text" name="discount-code"
+                                       class="form-control mt-3 radius-25 max-w-300 mx-2" placeholder="کد تخفیف">
 
-                                <button type="button" class="apply_discount btn btn-main font-16 radius-25 text-white px-5 mt-3 mx-2">اعمال</button>
+                                <button type="button"
+                                        class="apply_discount btn btn-main font-16 radius-25 text-white px-5 mt-3 mx-2">
+                                    اعمال
+                                </button>
                             </div>
 
                             <p id="discount_alert" class="display-none fg-red font-13"></p>
@@ -606,19 +613,24 @@ if (!isset($_GET['target'])) {
                     <tr>
                         <td class="text-right">
                             <p class="fw-semibold font-20">اشتراک فیتنس با سرِحال</p>
-                            <p class="mt-2 pr-2">تخفیف تابستانه</p>
+                            <p class="has_lined_price display-none mt-2 pr-2">تخفیف تابستانه</p>
                             <p class="display-none discount_summary mt-2 pr-2">کد تخفیف</p>
                             <p class="mt-2 pr-2">مالیات بر ارزش افزوده</p>
                         </td>
                         <td class="text-left">
-                            <p class="font-18 fg-gray">
+                            <p class="has_lined_price display-none font-18 fg-gray">
                                 <del id="plan_lined_price">189,000</del>
                                 تومان
                             </p>
-                            <p class="mt-2 fg-red fw-semibold font-20 dir-ltr">-<b id="plan_percentage">50</b><span
+                            <p id="plan_price_in_summary" class="display-none font-18">
+                                149,000
+                                تومان
+                            </p>
+                            <p class="has_lined_price display-none mt-2 fg-red fw-semibold font-20 dir-ltr">-<b id="plan_percentage">50</b><span
                                         class="font-sans-serif font-17">%</span>
                             </p>
-                            <p class="display-none discount_summary mt-2 fg-red fw-semibold font-20 dir-ltr">-<b id="discount_summary_percentage">20</b><span
+                            <p class="display-none discount_summary mt-2 fg-red fw-semibold font-20 dir-ltr">-<b
+                                        id="discount_summary_percentage">20</b><span
                                         class="font-sans-serif font-17">%</span>
                             </p>
                             <p class="mt-2 fg-green fw-semibold font-20 dir-ltr">+9<span

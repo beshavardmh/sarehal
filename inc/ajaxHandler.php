@@ -209,11 +209,14 @@ function plan_details_ajax()
 
             $data['plan_options'] = $plan_options;
 
-            $data['plan_lined_price'] = number_format($plan->lined_price);
+            if (!empty($plan->lined_price)){
+	            $data['plan_lined_price'] = number_format($plan->lined_price);
 
 //            $data['plan_percentage'] = floor(((intval($plan->lined_price) - intval($plan->price)) / intval($plan->lined_price) * 100) - 9);
 
-            $data['plan_percentage'] = floor((1 - (intval($plan->price) / (intval($plan->lined_price) * 1.09))) * 100);
+	            $data['plan_percentage'] = floor((1 - (intval($plan->price) / (intval($plan->lined_price) * 1.09))) * 100);
+            }
+
 
             $data['plan_price'] = number_format($plan->price);
 
@@ -285,7 +288,13 @@ function discount_check_ajax()
             $_SESSION['discount_id'] = $discount->ID;
             $_SESSION['signup_user_phone'] = $user_phone;
 
-            $data['discount_percentage'] = ceil(($plan->price / $plan->lined_price) * (($discount->price / 10) / ($plan->price / 1000)));
+	        if (!empty($plan->lined_price)) {
+		        $data['discount_percentage'] = ceil( ( $plan->price / $plan->lined_price ) * ( ( $discount->price / 10 ) / ( $plan->price / 1000 ) ) );
+	        }
+	        else{
+		        $data['discount_percentage'] = ceil(( $discount->price / 10 ) / ( $plan->price / 1000 ));
+	        }
+
             $data['plan_price'] = number_format($plan->price - $discount->price) . ' تومان';
 
             $data['msg'] = 'تخفیف با موفقیت اعمال شد';

@@ -17,10 +17,8 @@
                 <p class="max-w-450 mx-auto mx-lg-0 text-center text-lg-justify font-xs-16 font-18 mt-0">
                     
                 </p>
-                
 
-
-                <form action="https://sarehal.com/signup/?target=ff" method="get">
+                <form action="<?php echo home_url('signup'); ?>" method="get">
                     <div class="px-2 mx-auto mx-xl-0 pl-lg-6 max-w-500">
                         <label id="fitness" class="target_option row radius-30 p-2 mt-4 mx-n2 ai-center cursor-pointer">
                             <div class="icon-wrap bg-1 mx-2">
