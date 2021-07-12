@@ -738,3 +738,15 @@ table tr.odd td {
     pointer-events: visible;
     cursor: default !important;
 }
+
+.w-space-2{
+    word-spacing: 2px;
+}
+
+.blog-section .item{
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.08);
+}
+
+.blog-section .item .thumbnail{
+    height: 180px;
+}

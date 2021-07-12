@@ -41,6 +41,13 @@ function sarehal_eat_cb( $atts, $content = "" ) {
     return ob_get_clean();
 }
 
+add_shortcode( 'sarehal_blog', 'sarehal_blog_cb' );
+function sarehal_blog_cb( $atts, $content = "" ) {
+    ob_start();
+    get_template_part( 'templates/shortcodes/blog', null, compact('atts', 'content') );
+    return ob_get_clean();
+}
+
 add_shortcode( 'sarehal_testpage', 'sarehal_testpage_cb' );
 function sarehal_testpage_cb( $atts, $content = "" ) {
     ob_start();

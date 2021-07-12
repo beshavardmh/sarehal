@@ -42,6 +42,8 @@ function srh_setup()
             session_start();
         }
     }, 1);
+
+    add_image_size( 'sarehal_blog_thumbnail', 450, 300, true );
 }
 
 
