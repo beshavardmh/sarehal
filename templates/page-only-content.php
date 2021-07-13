@@ -1,5 +1,5 @@
 <?php /* Template Name: without header & footer */
-
+ob_start();
 get_header('none');
 
 if ( have_posts() ) {
@@ -13,3 +13,4 @@ if ( have_posts() ) {
 }
 
 get_footer('none');
+ob_end_flush();

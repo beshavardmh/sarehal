@@ -1,5 +1,5 @@
 <?php /* Template Name: simple header & footer */
-
+ob_start();
 get_header('simple');
 
 if ( have_posts() ) {
@@ -13,3 +13,4 @@ if ( have_posts() ) {
 }
 
 get_footer('simple');
+ob_end_flush();
