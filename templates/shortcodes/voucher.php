@@ -1,8 +1,8 @@
 <?php
-$db = new SarehalDbManager();
-$slug = esc_sql($_GET['plan']);
-$plan = $db->get_result_by($db->table_plans, "slug = '$slug'");
-$plan || wp_redirect(home_url());
+$db   = new SarehalDbManager();
+$slug = esc_sql( $_GET['plan'] );
+$plan = $db->get_result_by( $db->table_plans, "slug = '$slug'" );
+$plan || wp_redirect( home_url() );
 ?>
 <section class="voucher-details py-6">
     <div class="container">
@@ -11,57 +11,73 @@ $plan || wp_redirect(home_url());
         <div class="row ai-center">
             <div class="col-lg-6 mt-5">
                 <p class="font-20 text-center text-lg-right">
-                    شما اشتراک <?php echo $db->get_row($db->table_plans_durations, $plan->duration_id)->name; ?> <b
+                    شما اشتراک <?php echo $db->get_row( $db->table_plans_durations, $plan->duration_id )->name; ?> <b
                             class="font-22"><?php echo $plan->name; ?></b> را انتخاب کردید.
                     <br>
                     در این اشتراک، خدمات زیر را دریافت می کنید:
                 </p>
 
-                <?php $options = unserialize($plan->options); ?>
-                <?php if ($options): ?>
+				<?php $options = unserialize( $plan->options ); ?>
+				<?php if ( $options ): ?>
                     <ul class="pkg-items mt-5">
-                        <?php foreach ($options as $option_id => $option): ?>
-                            <?php if ($option['active']): ?>
-                                <li class="my-2"><?php echo $db->get_row($db->table_plans_options, $option_id)->name; ?></li>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
+						<?php foreach ( $options as $option_id => $option ): ?>
+							<?php if ( $option['active'] ): ?>
+                                <li class="my-2"><?php echo $db->get_row( $db->table_plans_options, $option_id )->name; ?></li>
+							<?php endif; ?>
+						<?php endforeach; ?>
                     </ul>
-                <?php endif; ?>
+				<?php endif; ?>
             </div>
 
             <div class="col-lg-6 bg-white mt-5">
                 <form action="" method="post" class="bg-white p-3 p-sm-4 radius-17">
                     <input type="hidden" name="plan_id" value="<?php echo $plan->ID; ?>">
-                    <input type="tel" class="form-control" name="phone"
-                           placeholder="شماره همراه (الزامی) : 09301234567">
-                    <input type="text" class="form-control mt-3" name="fullname"
+                    <input type="text" class="form-control radius-25 mb-3" name="fullname"
                            placeholder="نام و نام خانوادگی (الزامی)">
-                    <input type="email" class="form-control mt-3" name="email" placeholder="ایمیل (اختیاری)">
+                    <input type="tel" class="form-control radius-25" name="phone"
+                           placeholder="شماره همراه (الزامی) : 09301234567">
 
-                    <div class="errors-wrap alert alert-danger font-14 mt-5 display-none"></div>
+                    <div class="errors-wrap alert alert-danger mx-1 font-14 mt-3 mb-5 display-none"></div>
+
+                    <div class="discount-box radius-25 px-2 mb-n2 pb-3 mt-3">
+                        <div class="row jc-center py-0 jc-sm-between mx-n2 ai-center">
+                            <input type="text" name="discount-code" class="form-control mt-3 radius-25 max-w-300 mx-2"
+                                   placeholder="کد تخفیف">
+
+                            <button type="button"
+                                    class="apply_discount btn btn-main font-16 radius-25 text-white px-5 mt-3 mx-2">
+                                اعمال
+                            </button>
+                        </div>
+                    </div>
+
+                    <p id="discount_alert" class="display-none fg-red font-14 text-center mt-4"></p>
 
                     <div class="row flex-row-reverse ai-center mx-n2 ai-end jc-between">
                         <div class="px-2 mt-4">
-                            <img src="https://sarehal.com/wp-content/uploads/2021/06/zarinpal.png" width="100"
-                                 height="142" class="img-fluid" alt="زرین پال">
+                            <a href="https://www.zarinpal.com/trustPage/sarehal.com" target="_blank">
+                                <img src="https://cdn.zarinpal.com/badges/trustLogo/1.svg" width="70" height="85"
+                                     class="img-fluid" alt="پرداخت امن با زرین پال">
+                            </a>
                         </div>
 
                         <div class="text-center mx-2 mt-4">
-                            <?php if (!empty($plan->lined_price)): ?>
+							<?php if ( ! empty( $plan->lined_price ) ): ?>
                                 <p class="mb-n1 font-17 fg-main">
-                                    <del><?php echo number_format($plan->lined_price); ?></del>
+                                    <del><?php echo number_format( $plan->lined_price ); ?></del>
                                     تومان
                                 </p>
-                            <?php endif; ?>
+							<?php endif; ?>
                             <p class="mb-2 font-20 fg-red">
-                                <span class="font-30"><?php echo number_format($plan->price); ?></span>
+                                <span id="plan_price" class="font-30"><?php echo number_format( $plan->price ); ?></span>
                                 تومان
                             </p>
 
                             <button type="button" id="submit_pay"
                                     class="btn btn-fat btn-dark font-xs-16 px-4 radius-25">
                                 ثبت و پرداخت
-                                <i class="far fa-spinner-third process-animation text-white mr-2" style="display: none;"></i>
+                                <i class="far fa-spinner-third process-animation text-white mr-2"
+                                   style="display: none;"></i>
                             </button>
                         </div>
                     </div>

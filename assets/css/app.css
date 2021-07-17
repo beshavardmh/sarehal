@@ -750,3 +750,9 @@ table tr.odd td {
 .blog-section .item .thumbnail{
     height: 180px;
 }
+
+.discount-box{
+    background-color: #f1f1f1;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+}

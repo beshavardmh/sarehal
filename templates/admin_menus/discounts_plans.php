@@ -56,7 +56,7 @@ $db = new SarehalDbManager();
                 </div>
 
                 <?php
-                $discount_plans = unserialize($row->plans);
+                $discount_plans = !empty(unserialize($row->plans)) ? unserialize($row->plans) : array();
                 $plans_rows = $db->get_results($db->table_plans);
                 ?>
                 <?php if (!empty($plans_rows)): ?>

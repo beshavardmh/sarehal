@@ -771,7 +771,7 @@ jQuery(document).ready(function ($) {
                         $('#discount_alert').html(response.data.msg).removeClass('fg-green').addClass('fg-red').show();
                     } else {
                         $('#discount_alert').html(response.data.msg).removeClass('fg-red').addClass('fg-green').show();
-                        $('#plan_price').text(response.data.plan_price);
+                        $('#plan_price').text(response.data.plan_price + ' تومان');
                         $('#discount_summary_percentage').text(response.data.discount_percentage);
                         $('* .discount_summary').show();
                     }

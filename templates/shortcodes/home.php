@@ -49,6 +49,8 @@
 
                             <input type="radio" class="d-none" name="target" value="mind">
                         </label>
+
+                        <div class="errors-wrap alert alert-danger mx-1 font-14 mt-4 mb-n2 display-none"></div>
                     </div>
 
                     <div class="text-center text-lg-left max-w-500 pl-lg-6">
