@@ -290,11 +290,72 @@ if ( ! isset( $_GET['target'] ) ) {
             </div>
         </div>
 
+        <div id="services-step"
+             class="step position-absolute w-100 h-100 text-center top-0 right-0">
+            <div class="container pb-6 max-w-1000">
+                <h3>
+                    خدمات مورد نیاز خود را انتخاب کنید.
+                </h3>
+
+                <div class="row jc-center mt-n4 mt-lg-2">
+                    <label class="col-lg-4 mt-4">
+                        <div class="item outline_option has_hvr_bg overflow-hidden radius-21 p-3">
+                            <div class="bg-1 d-flex ai-center jc-center rounded-full mx-auto"
+                                 style="width: 60px; height: 60px">
+                                <i class="fal fa-utensils-alt font-36 fg-main"></i>
+                            </div>
+
+                            <h3 class="my-3 font-26">برنامه‌های تغذیه و تمرین اختصاصی</h3>
+
+                            <ul class="list-style-disc list-style-inside text-right font-16">
+                                <li class="mt-1">مبتنی بر هدف و سبک زندگی شما</li>
+                                <li class="mt-1"> طراحی انواع رژیم‌های خاص مثل کتوژنیک</li>
+                                <li class="mt-1">برنامه‌ی تمرین در باشگاه، خانه و فضای باز</li>
+                                <li class="mt-1">مبتنی بر جدیدترین یافته‌های علمی</li>
+                                <li class="mt-1">با قابلیت ویرایش نامحدود</li>
+                            </ul>
+                            <input type="checkbox" class="d-none" name="services-step[]" value="برنامه">
+                        </div>
+                    </label>
+
+                    <label class="col-lg-4 mt-4">
+                        <div class="item outline_option has_hvr_bg overflow-hidden radius-21 p-3">
+                            <div class="bg-1 d-flex ai-center jc-center rounded-full mx-auto"
+                                 style="width: 60px; height: 60px">
+                                <i class="fal fa-hands-heart font-36 fg-main"></i>
+                            </div>
+
+                            <h3 class="my-3 font-26">مربی تغذیه و تمرین اختصاصی</h3>
+
+                            <ul class="list-style-disc list-style-inside text-right font-16">
+                                <li class="mt-1">تقویت انگیزه‌ی شما تا رسیدن به هدف</li>
+                                <li class="mt-1">آموزش اصول صحیح تغذیه و تمرینات</li>
+                                <li class="mt-1">پاسخ‌گویی همیشگی</li>
+                                <li class="mt-1">مبتنی بر جدیدترین یافته‌های علمی</li>
+                                <li class="mt-1">افزایش بیش از ۵۰٪ موفقیت شما</li>
+                            </ul>
+                            <input type="checkbox" class="d-none" name="services-step[]" value="مربی">
+                        </div>
+                    </label>
+                </div>
+
+                <div class="display-none alert alert-danger w-100 max-w-500 mx-auto p-3 mt-5"></div>
+
+                <div class="d-flex jc-center mb-4">
+                    <button id="btn-services-step" type="button"
+                            class="next_step btn btn-dark hidden min-w-200 radius-25 d-flex ai-center jc-center text-white px-5 mt-5 lh-1">
+                        ادامه
+                        <i class="fal fa-chevron-left font-14 position-relative top-n1 mr-3"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <div id="information-step"
              class="step position-absolute w-100 h-100 text-center top-0 right-0">
             <div class="container pb-6 max-w-800">
                 <p class="font-22 font-xs-20 fw-semibold mb-5">
-                    یک حساب رایگان بسازید تا پاسخ‌هایتان را ثبت کنید.
+                    اطلاعات خود را وارد کنید تا یک جلسه مشاوره‌ی رایگان با مشاوران متخصص سرِحال دریافت کنید.
                 </p>
 
                 <div class="mt-4">
@@ -354,83 +415,21 @@ if ( ! isset( $_GET['target'] ) ) {
             </div>
         </div>
 
-        <div id="services-step"
-             class="step position-absolute w-100 h-100 text-center top-0 right-0">
-            <div class="container pb-6 max-w-1000">
-                <h3>
-                    خدمات <span class="fg-main py-2">سرِحال</span> برای رسیدن شما به هدف
-                </h3>
+        <div id="thankyou-step"
+             class="step position-absolute w-100 h-100 text-center top-0 right-0 active">
+            <div class="container pb-6 max-w-800">
+                <h2 class="mt-3">با تشکر از شما!  &#128591;
+                    <br>
+                    درخواست مشاوره‌ی رایگان شما ثبت شد.
+                </h2>
 
-                <div class="row jc-center mt-n4 mt-lg-2">
-                    <div class="col-lg-4 mt-4">
-                        <div class="item bg-white overflow-hidden radius-21 p-3">
-                            <div class="bg-1 d-flex ai-center jc-center rounded-full mx-auto"
-                                 style="width: 60px; height: 60px">
-                                <i class="fal fa-utensils-alt font-36 fg-main"></i>
-                            </div>
-
-                            <h3 class="my-3 font-26">برنامه‌ی تغذیه‌ی اختصاصی</h3>
-
-                            <ul class="list-style-disc list-style-inside text-right font-16">
-                                <li class="mt-1">مبتنی بر هدف و سبک زندگی شما</li>
-                                <li class="mt-1"> طراحی انواع رژیم‌های خاص مثل کتوژنیک</li>
-                                <li class="mt-1">مبتنی بر سفره‌ی شما و علایق غذایی‌تان</li>
-                                <li class="mt-1">مبتنی بر جدیدترین یافته‌های علمی</li>
-                                <li class="mt-1">با قابلیت ویرایش نامحدود</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 mt-4">
-                        <div class="item bg-white overflow-hidden radius-21 p-3">
-                            <div class="bg-1 d-flex ai-center jc-center rounded-full mx-auto"
-                                 style="width: 60px; height: 60px">
-                                <i class="fal fa-running font-36 fg-main"></i>
-                            </div>
-
-                            <h3 class="my-3 font-26">برنامه‌ی تمرین اختصاصی</h3>
-
-                            <ul class="list-style-disc list-style-inside text-right font-16">
-                                <li class="mt-1">مبتنی بر هدف و سبک زندگی شما</li>
-                                <li class="mt-1">برنامه‌ی تمرین در باشگاه، خانه و فضای باز</li>
-                                <li class="mt-1">مبتنی بر علایق و سطح شما</li>
-                                <li class="mt-1">مبتنی بر جدیدترین یافته‌های علمی</li>
-                                <li class="mt-1">با قابلیت ویرایش نامحدود</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 mt-4">
-                        <div class="item bg-white overflow-hidden radius-21 p-3">
-                            <div class="bg-1 d-flex ai-center jc-center rounded-full mx-auto"
-                                 style="width: 60px; height: 60px">
-                                <i class="fal fa-hands-heart font-36 fg-main"></i>
-                            </div>
-
-                            <h3 class="my-3 font-26">مربی تندرستی اختصاصی</h3>
-
-                            <ul class="list-style-disc list-style-inside text-right font-16">
-                                <li class="mt-1">تقویت انگیزه‌ی شما تا رسیدن به هدف</li>
-                                <li class="mt-1">آموزش اصول صحیح تغذیه و تمرینات</li>
-                                <li class="mt-1">پاسخ‌گویی همیشگی</li>
-                                <li class="mt-1">مبتنی بر جدیدترین یافته‌های علمی</li>
-                                <li class="mt-1">افزایش ۳۰٪ موفقیت شما</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="d-flex jc-center mb-5">
-                    <button id="btn-services-step" type="button"
-                            class="next_step btn btn-dark min-w-200 radius-25 d-flex ai-center jc-center text-white px-5 mt-5 mt-lg-6 lh-1">
-                        ادامه
-                        <i class="fal fa-chevron-left font-14 position-relative top-n1 mr-3"></i>
-                    </button>
-                </div>
+                <p class="font-22 font-xs-20 fw-semibold mb-4 py-3">
+                    متخصصان سرِحال به زودی با شما تماس خواهند گرفت.
+                </p>
             </div>
         </div>
 
-        <div id="plans-step"
+        <!--<div id="plans-step"
              class="step position-absolute w-100 h-100 text-center top-0 right-0">
             <div class="container pb-6 max-w-800">
                 <p class="font-22 font-xs-20 fw-semibold mb-3">
@@ -757,7 +756,7 @@ if ( ! isset( $_GET['target'] ) ) {
                                         </div>
                                     </div>
 
-                                    <!-- <div class="card mb-3 overflow-hidden b-0 bg-1 radius-10">
+                                    <div class="card mb-3 overflow-hidden b-0 bg-1 radius-10">
                                         <div class="card-header bg-transparent p-0 bb-0">
                                             <a class="d-flex ai-center jc-between fg-main p-3 font-20 font-xs-18"
                                                data-toggle="collapse" href="#collapse1" aria-expanded="true">
@@ -773,7 +772,7 @@ if ( ! isset( $_GET['target'] ) ) {
                                                 مبلغ اشتراک ظرف ۷۲ ساعت به حساب بانکی شما بازگردانده خواهد شد.
                                             </div>
                                         </div>
-                                    </div> -->
+                                    </div>
 
                                     <div class="card mb-3 overflow-hidden b-0 bg-1 radius-10">
                                         <div class="card-header bg-transparent p-0 bb-0">
@@ -824,7 +823,7 @@ if ( ! isset( $_GET['target'] ) ) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <footer class="position-fixed bottom-0 pt-4 w-100 z-index-2 d-none d-sm-block">
             <div style="background-color: #493e9a;" class="text-white font-15 text-center dir-ltr py-1">
