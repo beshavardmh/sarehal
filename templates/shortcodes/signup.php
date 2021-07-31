@@ -1,7 +1,7 @@
 <?php
 $targets = array( 'fitness', 'eat', 'mind' );
 if ( ! isset( $_GET['target'] ) || ! in_array( $_GET['target'], $targets ) ) {
-	wp_redirect( home_url() );
+    wp_redirect( home_url() );
 }
 ?>
 
@@ -39,19 +39,19 @@ if ( ! isset( $_GET['target'] ) || ! in_array( $_GET['target'], $targets ) ) {
             </a>
         </div>
 
-		<?php
-		switch ( $_GET['target'] ) {
+        <?php
+        switch ( $_GET['target'] ) {
             case 'fitness':
                 get_template_part('templates/signup_flow/fitness');
                 break;
-			case 'eat':
-				get_template_part('templates/signup_flow/eat');
-				break;
-			case 'mind':
-				get_template_part('templates/signup_flow/mind');
-				break;
-		}
-		?>
+            case 'eat':
+                get_template_part('templates/signup_flow/eat');
+                break;
+            case 'mind':
+                get_template_part('templates/signup_flow/mind');
+                break;
+        }
+        ?>
 
         <footer class="position-fixed bottom-0 pt-4 w-100 z-index-2 d-none d-sm-block">
             <div style="background-color: #493e9a;" class="text-white font-15 text-center dir-ltr py-1">
