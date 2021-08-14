@@ -263,17 +263,18 @@ function discount_check_ajax() {
 
 		$db = new SarehalDbManager();
 
-		$user_id = isset( $_SESSION['signup_user_id'] ) ? 1 : 0;
-		if ( ! $user_id ) {
-			$errMsg = 'خطا در انجام عملیات!';
-		}
-
-		$user_phone = $db->get_row( $db->table_users, $_SESSION['signup_user_id'] )->phone;
-
 		if (isset($_REQUEST['runtime_phone'])){
 			$is_valid_phone = preg_match('/^(\+98|0)?9\d{9}$/', $_REQUEST['runtime_phone']);
 			$user_phone = $is_valid_phone ? $_REQUEST['runtime_phone'] : null;
 		}
+		else{
+			$user_id = isset( $_SESSION['signup_user_id'] ) ? 1 : 0;
+			if ( ! $user_id ) {
+				$errMsg = 'خطا در انجام عملیات!';
+			}
+			$user_phone = $db->get_row( $db->table_users, $_SESSION['signup_user_id'] )->phone;
+		}
+
 
 		if ( ! $user_phone ) {
 			$errMsg = 'خطا در انجام عملیات!';
