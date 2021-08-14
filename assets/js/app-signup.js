@@ -172,34 +172,9 @@ jQuery(document).ready(function ($) {
             });
 
             $('[name="services-step[]"]').on('change', function () {
-                if ($(this).prop('checked') == true) {
-
-                    $('[data-option="none"]').prop('checked', false);
-                    $('[data-option="none"]').parent().removeClass('selected');
-                    $('[data-option="none"]').parent().find('.fa-check-square').removeClass('fa-check-square').addClass('fa-square');
-
-                    if ($(this).attr('data-option') == 'none') {
-                        $('* [name="services-step[]"]').prop('checked', false);
-                        $('* [name="services-step[]"]').parent().removeClass('selected');
-                        $('* [name="services-step[]"]').parent().find('.fa-check-square').removeClass('fa-check-square').addClass('fa-square');
-                    }
-
-                    $(this).prop('checked', true);
-                    $(this).parent().addClass('selected');
-                    $(this).parent().find('.fa-square').removeClass('fa-square').addClass('fa-check-square');
-
-                } else {
-
-                    $(this).parent().removeClass('selected');
-                    $(this).parent().find('.fa-check-square').removeClass('fa-check-square').addClass('fa-square');
-
-                }
-
-                if ($('[name="services-step[]"]:checked').length) {
-                    $('#services-step .next_step').removeClass('hidden');
-                } else {
-                    $('#services-step .next_step').addClass('hidden');
-                }
+                $('* #services-step label').removeClass('selected');
+                $(this).parent().addClass('selected');
+                goNextStep();
             });
 
             $('[name="fullname-step"]').on('input', function () {
@@ -323,6 +298,10 @@ jQuery(document).ready(function ($) {
             case 'gender-step':
                 $('* #gender-step input[type="radio"]').prop('checked', false);
                 $('* #gender-step label').removeClass('selected');
+                break;
+            case 'services-step':
+                $('* #services-step input[type="radio"]').prop('checked', false);
+                $('* #services-step label').removeClass('selected');
                 break;
             case 'plans-step':
                 $('* #plans-step input[type="radio"]').prop('checked', false);

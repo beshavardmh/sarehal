@@ -258,8 +258,8 @@
         </h3>
 
         <div class="row jc-center mt-n4 mt-lg-2">
-            <label id="label-services-step" class="col-lg-4 mt-4">
-                <div class="item outline_option has_hvr_bg overflow-hidden radius-21 p-3">
+            <div class="col-lg-4 mt-4">
+                <label id="btn-services-step" class="item outline_option has_hvr_bg overflow-hidden radius-21 p-3">
                     <div class="bg-1 d-flex ai-center jc-center rounded-full mx-auto"
                          style="width: 60px; height: 60px">
                         <i class="fal fa-utensils-alt font-36 fg-main"></i>
@@ -274,12 +274,12 @@
                         <li class="mt-1">مبتنی بر جدیدترین یافته‌های علمی</li>
                         <li class="mt-1">با قابلیت ویرایش نامحدود</li>
                     </ul>
-                    <input type="checkbox" class="d-none" name="services-step[]" value="برنامه">
-                </div>
-            </label>
+                    <input type="radio" class="d-none" name="services-step[]" value="برنامه">
+                </label>
+            </div>
 
-            <label id="label-services-step" class="col-lg-4 mt-4">
-                <div class="item outline_option has_hvr_bg overflow-hidden radius-21 p-3">
+            <div class="col-lg-4 mt-4">
+                <label id="btn-services-step" class="item outline_option has_hvr_bg overflow-hidden radius-21 p-3">
                     <div class="bg-1 d-flex ai-center jc-center rounded-full mx-auto"
                          style="width: 60px; height: 60px">
                         <i class="fal fa-hands-heart font-36 fg-main"></i>
@@ -294,20 +294,12 @@
                         <li class="mt-1">مبتنی بر جدیدترین یافته‌های علمی</li>
                         <li class="mt-1">افزایش بیش از ۵۰٪ موفقیت شما</li>
                     </ul>
-                    <input type="checkbox" class="d-none" name="services-step[]" value="مربی">
-                </div>
-            </label>
+                    <input type="radio" class="d-none" name="services-step[]" value="مربی">
+                </label>
+            </div>
         </div>
 
         <div class="display-none alert alert-danger w-100 max-w-500 mx-auto p-3 mt-5"></div>
-
-        <div class="d-flex jc-center mb-4">
-            <button id="btn-services-step" type="button"
-                    class="next_step btn btn-dark hidden min-w-200 radius-25 d-flex ai-center jc-center text-white px-5 mt-5 lh-1">
-                ادامه
-                <i class="fal fa-chevron-left font-14 position-relative top-n1 mr-3"></i>
-            </button>
-        </div>
     </div>
 </div>
 
@@ -378,7 +370,7 @@
 <div id="thankyou-step"
      class="step position-absolute w-100 h-100 text-center top-0 right-0 active">
     <div class="container pb-6 max-w-800">
-        <h2 class="mt-3">با تشکر از شما!  &#128591;
+        <h2 class="mt-3">با تشکر از شما! &#128591;
             <br>
             درخواست مشاوره‌ی رایگان شما ثبت شد.
         </h2>
