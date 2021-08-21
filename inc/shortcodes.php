@@ -1,8 +1,15 @@
 <?php
-add_shortcode( 'sarehal_home', 'sarehal_home_cb' );
-function sarehal_home_cb( $atts, $content = "" ) {
+add_shortcode( 'sarehal_l0', 'sarehal_l0_cb' );
+function sarehal_l0_cb( $atts, $content = "" ) {
     ob_start();
-    get_template_part( 'templates/shortcodes/home', null, compact('atts', 'content') );
+    get_template_part( 'templates/landings/l0', null, compact('atts', 'content') );
+    return ob_get_clean();
+}
+
+add_shortcode( 'sarehal_l1', 'sarehal_l1_cb' );
+function sarehal_l0_cb( $atts, $content = "" ) {
+    ob_start();
+    get_template_part( 'templates/landings/l1', null, compact('atts', 'content') );
     return ob_get_clean();
 }
 
@@ -34,13 +41,6 @@ function sarehal_signup_cb( $atts, $content = "" ) {
     return ob_get_clean();
 }
 
-add_shortcode( 'sarehal_eat', 'sarehal_eat_cb' );
-function sarehal_eat_cb( $atts, $content = "" ) {
-    ob_start();
-    get_template_part( 'templates/shortcodes/eat', null, compact('atts', 'content') );
-    return ob_get_clean();
-}
-
 add_shortcode( 'sarehal_blog', 'sarehal_blog_cb' );
 function sarehal_blog_cb( $atts, $content = "" ) {
     ob_start();
@@ -52,5 +52,12 @@ add_shortcode( 'sarehal_testpage', 'sarehal_testpage_cb' );
 function sarehal_testpage_cb( $atts, $content = "" ) {
     ob_start();
     get_template_part( 'templates/shortcodes/testpage', null, compact('atts', 'content') );
+    return ob_get_clean();
+}
+
+add_shortcode( 'sarehal_l1', 'sarehal_l1_cb' );
+function sarehal_l1_cb( $atts, $content = "" ) {
+    ob_start();
+    get_template_part( 'templates/landings/l1', null, compact('atts', 'content') );
     return ob_get_clean();
 }
