@@ -7,7 +7,7 @@ function sarehal_l0_cb( $atts, $content = "" ) {
 }
 
 add_shortcode( 'sarehal_l1', 'sarehal_l1_cb' );
-function sarehal_l0_cb( $atts, $content = "" ) {
+function sarehal_l1_cb( $atts, $content = "" ) {
     ob_start();
     get_template_part( 'templates/landings/l1', null, compact('atts', 'content') );
     return ob_get_clean();
@@ -52,12 +52,5 @@ add_shortcode( 'sarehal_testpage', 'sarehal_testpage_cb' );
 function sarehal_testpage_cb( $atts, $content = "" ) {
     ob_start();
     get_template_part( 'templates/shortcodes/testpage', null, compact('atts', 'content') );
-    return ob_get_clean();
-}
-
-add_shortcode( 'sarehal_l1', 'sarehal_l1_cb' );
-function sarehal_l1_cb( $atts, $content = "" ) {
-    ob_start();
-    get_template_part( 'templates/landings/l1', null, compact('atts', 'content') );
     return ob_get_clean();
 }
