@@ -208,10 +208,15 @@
     <div class="container pb-6 max-w-900">
         <h2 class="font-28 h-b-line text-center mb-4">دریافت برنامه از سرِحال</h2>
         <div class="row flex-column flex-lg-row ai-center jc-center mt-n5 mt-lg-0">
-            <div class="col-lg-5 mt-4">
-                <img data-src="https://sarehal.com/wp-content/uploads/2021/06/Before-After-Ebadi.png"
+            <div class="col-lg-5 mt-4 d-block d-sm-none">
+                <img data-src="https://sarehal.com/wp-content/uploads/2021/08/mPromotion.png"
                      width="511" height="451"
-                     class="img-fluid lazyload radius-10" alt="Sarehal Testimonial">
+                     class="img-fluid lazyload radius-10" alt="Promotion">
+            </div>
+            <div class="col-lg-5 d-none d-sm-block">
+                <img data-src="https://sarehal.com/wp-content/uploads/2021/08/dPromotion.png"
+                     width="511" height="451"
+                     class="img-fluid lazyload radius-10" alt="Promotion">
             </div>
             <div class="col-lg-5 mt-4">
                 <p class="fw-semibold text-right">
